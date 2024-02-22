@@ -1,6 +1,8 @@
 import RegisterForm from "../components/register/RegisterForm";
+import { useAuth } from "../contexts/authContext";
 
 function Register () {
+    const {userLoggedIn} = useAuth();
     return (
         <div>
             <h1>Register</h1>

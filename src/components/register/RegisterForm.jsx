@@ -30,8 +30,6 @@ const RegisterForm = () => {
         if(showConfirmPass === "text") setShowConfirmPass("password");
     }
 
-    const { userLoggedIn } = useAuth();
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -48,7 +46,6 @@ const RegisterForm = () => {
 
     return (
         <>
-
             <div className='flex flex-col bg-orange-300 rounded-lg py-4 px-10'>
             <h1>Sign up Today</h1>
             <form className='flex flex-col py-5' onSubmit={handleSubmit}>
