@@ -3,20 +3,35 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import 'bootstrap/dist/css/bootstrap.css';
+import { AuthProvider } from "./contexts/authContext";
+import { useRoutes } from "react-router-dom"
 
 function App() {
-  
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Login />}/>
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-      </Routes>
-    </BrowserRouter>
-  );
+  const routesArray = [
+    {
+      path: "*",
+      element: <Login />
+    },
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/register",
+      element: <Register />
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />
+    },
+  ];
+  let routesElement = useRoutes(routesArray);
+
+  return(
+    <AuthProvider>
+      <div>{routesElement}</div>
+    </AuthProvider>
+  )
 }
 
 export default App;
